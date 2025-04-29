@@ -54,6 +54,15 @@ code {
   margin-bottom: 2rem;
 }
 
+.comment-box-right {
+  width: 100%;
+}
+
+.comment-box-top {
+  display: flex;
+  justify-content: space-between;
+}
+
 .comment-score {
   display: flex;
   flex-direction: column;
@@ -111,5 +120,21 @@ span.score {
 }
 
 .user-profile-status {
-  color: var(--Grey-500)
+  color: var(--Grey-500);
+}
+
+.comment-reply-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.comment-reply-btn img {
+  margin-right: 1rem;
+}
+
+.comment-reply-btn span {
+  color: var(--Grey-500);
+  font-size: 1.4rem;
+  font-weight: 700;
 }
