@@ -47,6 +47,7 @@ code {
 
 .comment-box {
   display: flex;
+  gap: 2rem;
   background-color: var(--Grey-50);
   padding: 2rem;
   border-radius: 1.4rem;
@@ -92,4 +93,23 @@ span.score {
   font-size: 1.4rem;
   color: var(--Grey-800);
   background-color: var(--Grey-100);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-profile-img {
+  width: 3.6rem;
+}
+
+.user-profile-name {
+  color: var(--Grey-800);
+  font-weight: 500;
+}
+
+.user-profile-status {
+  color: var(--Grey-500)
 }

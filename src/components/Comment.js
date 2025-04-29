@@ -1,9 +1,17 @@
 import CommentScore from "./CommentScore";
+import CommentUser from "./CommentUser";
 
 function Comment({ comment }) {
   return (
     <div className="comment-box">
-      <CommentScore />
+      <div className="comment-box-left">
+        <CommentScore />
+      </div>
+      <div className="comment-box-right">
+        <div className="comment-box-top">
+          <CommentUser />
+        </div>
+      </div>
     </div>
   );
 }
