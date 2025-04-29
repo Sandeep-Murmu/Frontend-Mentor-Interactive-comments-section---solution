@@ -1,3 +1,4 @@
+import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
 import ReplyBtn from "./ReplyBtn";
@@ -12,6 +13,9 @@ function Comment({ comment }) {
         <div className="comment-box-top">
           <CommentUser />
           <ReplyBtn />
+        </div>
+        <div className="comment-box-bottom">
+          <CommentContent />
         </div>
       </div>
     </div>
