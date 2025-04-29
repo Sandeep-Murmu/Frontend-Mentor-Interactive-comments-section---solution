@@ -1,8 +1,13 @@
+import data from "./data.json";
+import CommentList from "./components/CommentList";
+import { useState } from "react";
 
 function App() {
+  const [comments, setComments] = useState(data.comments);
+
   return (
     <div className="App">
-      <h1>app</h1>
+      <CommentList comments={comments} />
     </div>
   );
 }

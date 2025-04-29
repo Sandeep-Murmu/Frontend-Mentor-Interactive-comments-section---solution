@@ -29,7 +29,9 @@ html {
 }
 
 body {
+  font-size: 1.6rem;
   background-color: var(--Grey-100);
+  padding-block: 6rem;
 }
 
 code {
@@ -37,3 +39,57 @@ code {
     monospace;
 }
 
+.comment-container {
+  margin: auto;
+  max-width: 890px;
+  padding: 2rem;
+}
+
+.comment-box {
+  display: flex;
+  background-color: var(--Grey-50);
+  padding: 2rem;
+  border-radius: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.comment-score {
+  display: flex;
+  flex-direction: column;
+}
+
+button.score-increament,
+button.score-decreament {
+  width: 3.2rem;
+  height: 3rem;
+  border: none;
+  background-color: var(--Grey-100);
+  color: var(--Grey-500);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+button.score-increament:active,
+button.score-decreament:active {
+  color: var(--Grey-800);
+}
+
+.score-increament {
+  border-radius: 6px 6px 0 0;
+}
+
+.score-decreament {
+  border-radius: 0 0 6px 6px;
+}
+
+span.score {
+  width: 3.2rem;
+  height: 3rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--Grey-800);
+  background-color: var(--Grey-100);
+}
