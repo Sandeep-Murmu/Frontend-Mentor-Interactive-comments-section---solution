@@ -7,15 +7,19 @@ function Comment({ comment }) {
   return (
     <div className="comment-box">
       <div className="comment-box-left">
-        <CommentScore />
+        <CommentScore>{comment.score}</CommentScore>
       </div>
       <div className="comment-box-right">
         <div className="comment-box-top">
-          <CommentUser />
+          <CommentUser
+            profile={comment.user.image.png}
+            name={comment.user.username}
+            status={comment.createdAt}
+          />
           <ReplyBtn />
         </div>
         <div className="comment-box-bottom">
-          <CommentContent />
+          <CommentContent>{comment.content}</CommentContent>
         </div>
       </div>
     </div>

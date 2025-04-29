@@ -1,13 +1,13 @@
-function CommentUser() {
+function CommentUser({ profile, name, status }) {
   return (
     <div className="user-info">
       <img
         className="user-profile-img"
-        src="../../images/avatars/image-amyrobson.png"
+        src={`../.${profile}`}
         alt="profile-img"
       />
-      <span className="user-profile-name">Amyrobson</span>
-      <span className="user-profile-status">1 month ago</span>
+      <span className="user-profile-name">{name}</span>
+      <span className="user-profile-status">{status}</span>
     </div>
   );
 }
