@@ -7,7 +7,9 @@ function App() {
 
   return (
     <div className="App">
-      <CommentList comments={comments} />
+      <div className="comment-container">
+        <CommentList comments={comments} />
+      </div>
     </div>
   );
 }

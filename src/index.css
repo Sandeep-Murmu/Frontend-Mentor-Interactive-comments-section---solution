@@ -45,6 +45,10 @@ code {
   padding: 2rem;
 }
 
+.reply-section {
+  padding-left: 8rem;
+}
+
 .comment-box {
   display: flex;
   gap: 2rem;

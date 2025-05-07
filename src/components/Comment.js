@@ -1,11 +1,14 @@
+import { useEffect } from "react";
 import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
 import ReplyBtn from "./ReplyBtn";
 
-function Comment({ comment }) {
+function Comment({ comment, newComments, setMode }) {
+
+  
   return (
-    <div className="comment-box">
+    <div className="comment-box" data-id={comment.id}>
       <div className="comment-box-left">
         <CommentScore>{comment.score}</CommentScore>
       </div>

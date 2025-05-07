@@ -1,6 +1,6 @@
 {
   "currentUser": {
-    "image": { 
+    "image": {
       "png": "./images/avatars/image-juliusomo.png",
       "webp": "./images/avatars/image-juliusomo.webp"
     },
@@ -13,7 +13,7 @@
       "createdAt": "1 month ago",
       "score": 12,
       "user": {
-        "image": { 
+        "image": {
           "png": "./images/avatars/image-amyrobson.png",
           "webp": "./images/avatars/image-amyrobson.webp"
         },
@@ -27,7 +27,7 @@
       "createdAt": "2 weeks ago",
       "score": 5,
       "user": {
-        "image": { 
+        "image": {
           "png": "./images/avatars/image-maxblagun.png",
           "webp": "./images/avatars/image-maxblagun.webp"
         },
@@ -40,13 +40,31 @@
           "createdAt": "1 week ago",
           "score": 4,
           "replyingTo": "maxblagun",
+          "replyingToId": 2,
           "user": {
-            "image": { 
+            "image": {
               "png": "./images/avatars/image-ramsesmiron.png",
               "webp": "./images/avatars/image-ramsesmiron.webp"
             },
             "username": "ramsesmiron"
-          }
+          },
+          "replies": [
+            {
+              "id": 5,
+              "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+              "createdAt": "1 week ago",
+              "score": 4,
+              "replyingTo": "ramsesmiron",
+              "replyingToId": 3,
+              "user": {
+                "image": {
+                  "png": "./images/avatars/image-ramsesmiron.png",
+                  "webp": "./images/avatars/image-ramsesmiron.webp"
+                },
+                "username": "ramsesmiron"
+              }
+            }
+          ]
         },
         {
           "id": 4,
@@ -54,8 +72,9 @@
           "createdAt": "2 days ago",
           "score": 2,
           "replyingTo": "ramsesmiron",
+          "replyingToId": 2,
           "user": {
-            "image": { 
+            "image": {
               "png": "./images/avatars/image-juliusomo.png",
               "webp": "./images/avatars/image-juliusomo.webp"
             },
