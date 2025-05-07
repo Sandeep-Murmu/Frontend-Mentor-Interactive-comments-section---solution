@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";

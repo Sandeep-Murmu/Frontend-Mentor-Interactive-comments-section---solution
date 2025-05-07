@@ -1,10 +1,9 @@
 import Comment from "./Comment";
+import CommentItem from "./CommentItem";
 
 function CommentList({ comments }) {
   return comments.map((comment, i) => (
-    <div className="comment-main">
-      <Comment key={i} comment={comment} />
-    </div>
+      <CommentItem key={i} comment={comment} />
   ));
 }
 

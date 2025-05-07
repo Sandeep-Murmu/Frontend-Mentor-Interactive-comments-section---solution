@@ -4,7 +4,6 @@
   --Purple-600: hsl(238, 40%, 52%);
   --Pink-400: hsl(358, 79%, 66%);
   --Purple-200: hsl(239, 57%, 85%);
-  --Purple-200: hsl(239, 57%, 85%);
 
   --Grey-800: hsl(212, 24%, 26%);
   --Grey-500: hsl(211, 10%, 45%);
@@ -56,6 +55,7 @@ code {
   padding: 2rem;
   border-radius: 1.4rem;
   margin-bottom: 2rem;
+  align-items: start;
 }
 
 .comment-box-right {
@@ -148,4 +148,35 @@ p.comment-content {
   color: var(--Grey-500);
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+
+.reply-input {
+  width: 100%;
+  border: 1px solid var(--Grey-100);
+  border-radius: 0.6rem;
+  outline: none;
+  padding: 1rem;
+  font-family: inherit;
+  color: var(--Grey-500);
+}
+
+.reply-input::placeholder {
+  color: var(--Purple-200);
+}
+
+.comment-reply .user-info {
+  align-items: start;
+  gap: 0;
+}
+
+.reply-send-btn {
+  padding: 1rem 1.4rem;
+  background-color: var(--Purple-600);
+  border-radius: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
