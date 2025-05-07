@@ -1,14 +1,10 @@
-import { useState } from "react";
-import CommentItem from "./CommentItem";
+import Comment from "./Comment";
 
 function CommentList({ comments }) {
-
   return comments.map((comment, i) => (
-    <CommentItem
-      key={i}
-      comment={comment}
-      // newComments={setCommentList}
-    />
+    <div className="comment-main">
+      <Comment key={i} comment={comment} />
+    </div>
   ));
 }
 
