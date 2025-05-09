@@ -11,6 +11,7 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
   const handleReply = function () {
     setReplyOption((option) => !option);
     updateActiveReply(comment.id);
+    console.log(comment.user.username);
   };
 
   return (
@@ -29,7 +30,10 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
             <ReplyBtn toggleReply={handleReply} />
           </div>
           <div className="comment-box-bottom">
-            <CommentContent>{comment.content}</CommentContent>
+            <CommentContent
+              replyTo={comment.replyingTo ? `@${comment.replyingTo}` : ""}
+              content={comment.content}
+            />
           </div>
         </div>
       </div>
@@ -47,7 +51,9 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
           ))}
       </div>
 
-      {replyOption && comment.id === activeReply && <Reply user={user} />}
+      {replyOption && comment.id === activeReply && (
+        <Reply user={user} replyTo={comment.user.username} />
+      )}
     </>
   );
 }

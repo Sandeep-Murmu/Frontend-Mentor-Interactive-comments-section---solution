@@ -180,3 +180,7 @@ p.comment-content {
   outline: none;
   cursor: pointer;
 }
+
+.reply-to {
+  color: var(--Grey-800);
+}
