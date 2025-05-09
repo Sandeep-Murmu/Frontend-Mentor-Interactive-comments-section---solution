@@ -1,10 +1,15 @@
 import Comment from "./Comment";
 
-function CommentItem({ comment, user }) {
+function CommentItem({ comment, user, updateActiveReply, activeReply }) {
   return (
     <>
       <div className="comment-main">
-        <Comment comment={comment} user={user} />
+        <Comment
+          comment={comment}
+          user={user}
+          updateActiveReply={updateActiveReply}
+          activeReply={activeReply}
+        />
       </div>
     </>
   );

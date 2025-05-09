@@ -5,11 +5,12 @@ import CommentUser from "./CommentUser";
 import Reply from "./Reply";
 import ReplyBtn from "./ReplyBtn";
 
-function Comment({ comment, user }) {
+function Comment({ comment, user, updateActiveReply, activeReply }) {
   const [replyOption, setReplyOption] = useState(false);
 
   const handleReply = function () {
     setReplyOption((option) => !option);
+    updateActiveReply(comment.id);
   };
 
   return (
@@ -35,10 +36,18 @@ function Comment({ comment, user }) {
       <div className="reply-section">
         {comment.replies &&
           comment.replies.length > 0 &&
-          comment.replies.map((el, i) => <Comment comment={el} key={i} user={user}/>)}
+          comment.replies.map((el, i) => (
+            <Comment
+              comment={el}
+              key={i}
+              user={user}
+              updateActiveReply={updateActiveReply}
+              activeReply={activeReply}
+            />
+          ))}
       </div>
 
-      {replyOption && <Reply user={user} />}
+      {replyOption && comment.id === activeReply && <Reply user={user} />}
     </>
   );
 }
