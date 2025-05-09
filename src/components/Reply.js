@@ -3,7 +3,7 @@ import ReplyInput from "./ReplyInput";
 import ReplySendBtn from "./ReplySendBtn";
 
 function Reply({ user }) {
-  console.log(user);
+  // console.log(user);
   return (
     <div className="comment-box comment-reply">
       <CommentUser profile={user.image.png} />

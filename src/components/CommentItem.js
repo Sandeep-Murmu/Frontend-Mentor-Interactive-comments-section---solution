@@ -1,11 +1,10 @@
 import Comment from "./Comment";
 
-function CommentItem({ comment }) {
-
+function CommentItem({ comment, user }) {
   return (
     <>
       <div className="comment-main">
-        <Comment comment={comment} />
+        <Comment comment={comment} user={user} />
       </div>
     </>
   );

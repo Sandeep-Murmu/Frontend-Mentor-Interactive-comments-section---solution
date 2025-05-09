@@ -1,9 +1,17 @@
+import { useState } from "react";
 import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
+import Reply from "./Reply";
 import ReplyBtn from "./ReplyBtn";
 
-function Comment({ comment }) {
+function Comment({ comment, user }) {
+  const [replyOption, setReplyOption] = useState(false);
+
+  const handleReply = function () {
+    setReplyOption((option) => !option);
+  };
+
   return (
     <>
       <div className="comment-box" data-id={comment.id}>
@@ -17,7 +25,7 @@ function Comment({ comment }) {
               name={comment.user.username}
               status={comment.createdAt}
             />
-            <ReplyBtn />
+            <ReplyBtn toggleReply={handleReply} />
           </div>
           <div className="comment-box-bottom">
             <CommentContent>{comment.content}</CommentContent>
@@ -27,8 +35,10 @@ function Comment({ comment }) {
       <div className="reply-section">
         {comment.replies &&
           comment.replies.length > 0 &&
-          comment.replies.map((el, i) => <Comment comment={el} key={i} />)}
+          comment.replies.map((el, i) => <Comment comment={el} key={i} user={user}/>)}
       </div>
+
+      {replyOption && <Reply user={user} />}
     </>
   );
 }

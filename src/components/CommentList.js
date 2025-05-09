@@ -1,9 +1,8 @@
-import Comment from "./Comment";
 import CommentItem from "./CommentItem";
 
-function CommentList({ comments }) {
+function CommentList({ comments, user }) {
   return comments.map((comment, i) => (
-      <CommentItem key={i} comment={comment} />
+    <CommentItem key={i} comment={comment} user={user} />
   ));
 }
 
