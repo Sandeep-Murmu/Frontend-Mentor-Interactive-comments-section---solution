@@ -10,7 +10,6 @@ function ReplyInput({ replyTo }) {
       rows={4}
       value={content}
       onChange={(e) => setContent(e.target.value)}
-      
     />
   );
 }

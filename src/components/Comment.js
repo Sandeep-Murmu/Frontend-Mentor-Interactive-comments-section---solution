@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
@@ -13,6 +13,15 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
     updateActiveReply(comment.id);
     console.log(comment.user.username);
   };
+
+  useEffect(
+    function () {
+      if (comment.id !== activeReply) {
+        setReplyOption(false);
+      }
+    },
+    [activeReply]
+  );
 
   return (
     <>
