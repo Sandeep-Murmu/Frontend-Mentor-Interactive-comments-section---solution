@@ -7,15 +7,14 @@ import CommentItem from "./components/CommentItem";
 function App() {
   const [comments, setComments] = useState(data.comments);
   const [activeReply, setActiveReply] = useState(null);
-  const [newComment, setNewComment] = useState({});
   const user = data.currentUser;
 
   const handleActiveReply = function (id) {
     setActiveReply(id);
   };
 
-  const handleNewComment = function (commentObj) {
-    setNewComment(commentObj);
+  const handleAddComment = function (cmntObj) {
+    setComments((comments) => [...comments, cmntObj]);
   };
 
   return (
@@ -30,7 +29,7 @@ function App() {
             activeReply={activeReply}
           />
         ))}
-        <Reply user={user} />
+        <Reply user={user} handleSubmit={handleAddComment} />
       </div>
     </div>
   );

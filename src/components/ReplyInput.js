@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-function ReplyInput({ replyTo }) {
-  const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
+function ReplyInput({ replyTo, content, setContent }) {
+  // const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
   const replyTextRef = useRef(null);
 
   useEffect(function () {
