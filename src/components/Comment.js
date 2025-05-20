@@ -14,6 +14,14 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
     console.log(comment.user.username);
   };
 
+  const handleAddReply = function (replyObj) {
+    comment.replies = comment.replies
+      ? [...comment.replies, replyObj]
+      : [replyObj];
+
+    setReplyOption(false);
+  };
+
   useEffect(
     function () {
       if (comment.id !== activeReply) {
@@ -61,7 +69,11 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
       </div>
 
       {replyOption && comment.id === activeReply && (
-        <Reply user={user} replyTo={comment.user.username} />
+        <Reply
+          user={user}
+          replyTo={comment.user.username}
+          handleSubmit={handleAddReply}
+        />
       )}
     </>
   );
