@@ -1,5 +1,4 @@
 import data from "./data.json";
-import CommentList from "./components/CommentList";
 import { useState } from "react";
 import Reply from "./components/Reply";
 import CommentItem from "./components/CommentItem";

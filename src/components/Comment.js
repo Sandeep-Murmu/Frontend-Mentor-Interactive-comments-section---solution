@@ -7,6 +7,8 @@ import ReplyBtn from "./ReplyBtn";
 
 function Comment({ comment, user, updateActiveReply, activeReply }) {
   const [replyOption, setReplyOption] = useState(false);
+  const [commentScore, setCommentScore] = useState(comment.score);
+  const [vote, setVote] = useState(null);
 
   const handleReply = function () {
     setReplyOption((option) => !option);
@@ -22,6 +24,34 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
     setReplyOption(false);
   };
 
+  const handleCommentScore = function (type) {
+    if (type === "increament") {
+      if (vote === "up") {
+        setCommentScore((score) => score - 1);
+        setVote(null);
+      } else if (vote === "down") {
+        setCommentScore((score) => score + 2);
+        setVote("up");
+      } else {
+        setCommentScore((score) => score + 1);
+        setVote("up");
+      }
+    } else if (type === "decreament") {
+      if (vote === "down") {
+        setCommentScore((score) => score + 1);
+        setVote(null);
+      } else if (vote === "up") {
+        setCommentScore((score) => score - 2);
+        setVote("down");
+      } else {
+        setCommentScore((score) => score - 1);
+        setVote("down");
+      }
+    } else {
+      console.log("incorrect score handle type");
+    }
+  };
+
   useEffect(
     function () {
       if (comment.id !== activeReply) {
@@ -30,12 +60,14 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
     },
     [activeReply]
   );
-
+  console.log("comment: ", comment);
   return (
     <>
       <div className="comment-box" data-id={comment.id}>
         <div className="comment-box-left">
-          <CommentScore>{comment.score}</CommentScore>
+          <CommentScore vote={vote} scoreControl={handleCommentScore}>
+            {commentScore}
+          </CommentScore>
         </div>
         <div className="comment-box-right">
           <div className="comment-box-top">
