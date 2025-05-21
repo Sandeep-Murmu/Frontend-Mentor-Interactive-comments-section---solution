@@ -73,6 +73,7 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
           user={user}
           replyTo={comment.user.username}
           handleSubmit={handleAddReply}
+          replyOption={true}
         />
       )}
     </>
