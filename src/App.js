@@ -6,6 +6,7 @@ import CommentItem from "./components/CommentItem";
 function App() {
   const [comments, setComments] = useState(data.comments);
   const [activeReply, setActiveReply] = useState(null);
+  const [idCount, setIdCount] = useState(() => 4);
   const user = data.currentUser;
 
   const handleActiveReply = function (id) {
@@ -26,9 +27,16 @@ function App() {
             user={user}
             updateActiveReply={handleActiveReply}
             activeReply={activeReply}
+            idCount={idCount}
+            setIdCount={setIdCount}
           />
         ))}
-        <Reply user={user} handleSubmit={handleAddComment} />
+        <Reply
+          user={user}
+          handleSubmit={handleAddComment}
+          idCount={idCount}
+          setIdCount={setIdCount}
+        />
       </div>
     </div>
   );

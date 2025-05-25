@@ -5,7 +5,14 @@ import CommentUser from "./CommentUser";
 import Reply from "./Reply";
 import ReplyBtn from "./ReplyBtn";
 
-function Comment({ comment, user, updateActiveReply, activeReply }) {
+function Comment({
+  comment,
+  user,
+  updateActiveReply,
+  activeReply,
+  idCount,
+  setIdCount,
+}) {
   const [replyOption, setReplyOption] = useState(false);
   const [commentScore, setCommentScore] = useState(comment.score);
   const [vote, setVote] = useState(null);
@@ -13,7 +20,6 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
   const handleReply = function () {
     setReplyOption((option) => !option);
     updateActiveReply(comment.id);
-    console.log(comment.user.username);
   };
 
   const handleAddReply = function (replyObj) {
@@ -60,7 +66,7 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
     },
     [activeReply]
   );
-  console.log("comment: ", comment);
+
   return (
     <>
       <div className="comment-box" data-id={comment.id}>
@@ -96,6 +102,8 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
               user={user}
               updateActiveReply={updateActiveReply}
               activeReply={activeReply}
+              idCount={idCount}
+              setIdCount={setIdCount}
             />
           ))}
       </div>
@@ -106,6 +114,8 @@ function Comment({ comment, user, updateActiveReply, activeReply }) {
           replyTo={comment.user.username}
           handleSubmit={handleAddReply}
           replyOption={true}
+          idCount={idCount}
+          setIdCount={setIdCount}
         />
       )}
     </>

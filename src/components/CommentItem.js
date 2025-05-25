@@ -1,6 +1,13 @@
 import Comment from "./Comment";
 
-function CommentItem({ comment, user, updateActiveReply, activeReply }) {
+function CommentItem({
+  comment,
+  user,
+  updateActiveReply,
+  activeReply,
+  idCount,
+  setIdCount,
+}) {
   return (
     <>
       <div className="comment-main">
@@ -9,6 +16,8 @@ function CommentItem({ comment, user, updateActiveReply, activeReply }) {
           user={user}
           updateActiveReply={updateActiveReply}
           activeReply={activeReply}
+          idCount={idCount}
+          setIdCount={setIdCount}
         />
       </div>
     </>
