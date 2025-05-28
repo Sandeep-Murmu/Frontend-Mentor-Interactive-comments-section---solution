@@ -3,8 +3,16 @@ import CommentUser from "./CommentUser";
 import ReplyInput from "./ReplyInput";
 import ReplySendBtn from "./ReplySendBtn";
 
-function Reply({ user, replyTo, handleSubmit, replyOption = false , idCount, setIdCount}) {
+function Reply({
+  user,
+  replyTo,
+  handleSubmit,
+  replyOption = false,
+  idCount,
+  setIdCount,
+}) {
   const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
+  const [replyError, setReplyError] = useState(false);
 
   function removeFirstWord(str) {
     if (!str) return;
@@ -49,15 +57,28 @@ function Reply({ user, replyTo, handleSubmit, replyOption = false , idCount, set
       score: 0,
       replies: [],
     };
+
+    if (newComment.content.length === 0) {
+      setReplyError(true);
+      return;
+    }
+
     handleSubmit(newComment);
     setContent("");
-    console.log("new comment id: ", newComment.id);
   }
   return (
     <div className="comment-box comment-reply">
       <CommentUser profile={user.image.png} />
-      <ReplyInput replyTo={replyTo} content={content} setContent={setContent} />
-      <ReplySendBtn user={user} handleSend={handleSend} />
+      <ReplyInput
+        replyTo={replyTo}
+        content={content}
+        setContent={setContent}
+        error={replyError}
+      />
+      <ReplySendBtn user={user} handleSend={handleSend}>
+        {replyOption ? "Reply" : "Send"}
+      </ReplySendBtn>
+      
     </div>
   );
 }

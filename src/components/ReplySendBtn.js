@@ -1,9 +1,7 @@
-function ReplySendBtn({ user, handleSend }) {
-
-
+function ReplySendBtn({ user, handleSend, children }) {
   return (
     <button className="reply-send-btn" onClick={handleSend}>
-      Send
+      {children}
     </button>
   );
 }

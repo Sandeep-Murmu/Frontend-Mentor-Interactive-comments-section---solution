@@ -24,6 +24,7 @@ html {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-style: normal;
+  box-sizing: border-box;
 }
 
 body {
@@ -39,7 +40,7 @@ code {
 
 .comment-container {
   margin: auto;
-  max-width: 760px;
+  max-width: 754px;
   padding: 2rem;
 }
 
@@ -147,6 +148,11 @@ p.comment-content {
   line-height: 2.4rem;
 }
 
+.reply-input-container {
+  position: relative;
+  width: 100%;
+}
+
 .reply-input {
   width: 100%;
   border: 1px solid var(--Grey-100);
@@ -157,8 +163,43 @@ p.comment-content {
   color: var(--Grey-500);
 }
 
+.reply-input:focus {
+  border: 1px solid var(--Grey-500);
+}
+
+.reply-input.reply-input-error {
+  border: 1px solid var(--Pink-400);
+}
+
 .reply-input::placeholder {
   color: var(--Purple-200);
+}
+
+.reply-error {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  color: #000;
+  border: 1px solid red;
+  padding: 2px 4px;
+  font-size: 1.4rem;
+  animation-name: appear-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-direction: normal;
+  /* animation-fill-mode: forwards; */
+}
+
+@keyframes appear-animation {
+  0% {
+    opacity: 0;
+    bottom: -30px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: -24px;
+  }
 }
 
 .comment-reply .user-info {

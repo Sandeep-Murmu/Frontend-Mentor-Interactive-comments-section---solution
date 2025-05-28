@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import ReplyError from "./ReplyError";
 
-function ReplyInput({ replyTo, content, setContent }) {
+function ReplyInput({ replyTo, content, setContent, error }) {
   // const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
   const replyTextRef = useRef(null);
 
@@ -13,14 +14,17 @@ function ReplyInput({ replyTo, content, setContent }) {
   }, []);
 
   return (
-    <textarea
-      ref={replyTextRef}
-      className="reply-input"
-      placeholder="Add a comment..."
-      rows={4}
-      value={content}
-      onChange={(e) => setContent(e.target.value)}
-    />
+    <div className="reply-input-container">
+      <textarea
+        ref={replyTextRef}
+        className={`reply-input ${error ? "reply-input-error" : ""}`}
+        placeholder="Add a comment..."
+        rows={4}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
+      {error && <ReplyError />}
+    </div>
   );
 }
 
