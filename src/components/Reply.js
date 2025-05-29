@@ -10,6 +10,7 @@ function Reply({
   replyOption = false,
   idCount,
   setIdCount,
+  level,
 }) {
   const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
   const [replyError, setReplyError] = useState(false);
@@ -74,11 +75,11 @@ function Reply({
         content={content}
         setContent={setContent}
         error={replyError}
+        level={level}
       />
       <ReplySendBtn user={user} handleSend={handleSend}>
         {replyOption ? "Reply" : "Send"}
       </ReplySendBtn>
-      
     </div>
   );
 }

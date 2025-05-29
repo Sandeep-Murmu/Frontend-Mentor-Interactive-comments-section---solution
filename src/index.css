@@ -217,6 +217,11 @@ p.comment-content {
   border: none;
   outline: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reply-send-btn:hover {
+  background-color: var(--Purple-200);
 }
 
 .reply-to {

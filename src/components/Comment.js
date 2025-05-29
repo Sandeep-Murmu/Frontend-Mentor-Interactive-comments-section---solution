@@ -116,6 +116,7 @@ function Comment({
           replyOption={true}
           idCount={idCount}
           setIdCount={setIdCount}
+          level="Reply"
         />
       )}
     </>

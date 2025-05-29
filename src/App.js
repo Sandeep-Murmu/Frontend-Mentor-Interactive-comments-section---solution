@@ -36,6 +36,7 @@ function App() {
           handleSubmit={handleAddComment}
           idCount={idCount}
           setIdCount={setIdCount}
+          level="Comment"
         />
       </div>
     </div>

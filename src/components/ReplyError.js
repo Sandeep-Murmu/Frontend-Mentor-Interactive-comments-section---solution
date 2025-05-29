@@ -1,5 +1,5 @@
-function ReplyError() {
-  return <div className="reply-error">The reply field is empty</div>;
+function ReplyError({ level }) {
+  return <div className="reply-error">The {level} field is empty</div>;
 }
 
 export default ReplyError;

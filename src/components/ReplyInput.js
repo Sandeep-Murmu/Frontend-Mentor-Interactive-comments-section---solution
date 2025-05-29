@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ReplyError from "./ReplyError";
 
-function ReplyInput({ replyTo, content, setContent, error }) {
+function ReplyInput({ replyTo, content, setContent, error, level }) {
   // const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
   const replyTextRef = useRef(null);
 
@@ -23,7 +23,7 @@ function ReplyInput({ replyTo, content, setContent, error }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      {error && <ReplyError />}
+      {error && <ReplyError level={level} />}
     </div>
   );
 }
