@@ -17,6 +17,12 @@ function Comment({
   const [commentScore, setCommentScore] = useState(comment.score);
   const [vote, setVote] = useState(null);
 
+  if (user.username === comment.user.username) {
+    console.log("same user");
+  } else {
+    console.log("different user");
+  }
+
   const handleReply = function () {
     setReplyOption((option) => !option);
     updateActiveReply(comment.id);
@@ -81,6 +87,7 @@ function Comment({
               profile={comment.user.image.png}
               name={comment.user.username}
               status={comment.createdAt}
+              currentUser={comment.user.username === user.username}
             />
             <ReplyBtn toggleReply={handleReply} />
           </div>

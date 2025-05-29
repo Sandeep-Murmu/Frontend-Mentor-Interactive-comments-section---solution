@@ -59,6 +59,8 @@ function Reply({
       replies: [],
     };
 
+    console.log(user);
+
     if (newComment.content.length === 0) {
       setReplyError(true);
       return;
@@ -77,7 +79,7 @@ function Reply({
         error={replyError}
         level={level}
       />
-      <ReplySendBtn user={user} handleSend={handleSend}>
+      <ReplySendBtn handleSend={handleSend}>
         {replyOption ? "Reply" : "Send"}
       </ReplySendBtn>
     </div>

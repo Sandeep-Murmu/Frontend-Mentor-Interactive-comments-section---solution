@@ -1,7 +1,7 @@
 import data from "./data.json";
 import { useState } from "react";
 import Reply from "./components/Reply";
-import CommentItem from "./components/CommentItem";
+import Comment from "./components/Comment";
 
 function App() {
   const [comments, setComments] = useState(data.comments);
@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <div className="comment-container">
         {comments.map((comment, i) => (
-          <CommentItem
+          <Comment
             key={i}
             comment={comment}
             user={user}

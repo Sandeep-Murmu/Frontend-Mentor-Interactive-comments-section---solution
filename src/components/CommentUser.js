@@ -1,4 +1,4 @@
-function CommentUser({ profile, name, status }) {
+function CommentUser({ profile, name, status, currentUser = false }) {
   return (
     <div className="user-info">
       <img
@@ -7,6 +7,9 @@ function CommentUser({ profile, name, status }) {
         alt="profile-img"
       />
       <span className="user-profile-name">{name}</span>
+      {currentUser && (
+        <span className="user-profile-tag">{currentUser ? "you" : ""}</span>
+      )}
       <span className="user-profile-status">{status}</span>
     </div>
   );

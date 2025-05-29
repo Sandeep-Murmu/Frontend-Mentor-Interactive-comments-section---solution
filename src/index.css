@@ -122,6 +122,16 @@ span.score {
   font-weight: 500;
 }
 
+.user-profile-tag {
+  background: var(--Purple-600);
+  border-radius: 2px;
+  padding: 2px 4px;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: #fff;
+}
+
 .user-profile-status {
   color: var(--Grey-500);
 }
