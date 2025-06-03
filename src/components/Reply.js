@@ -59,8 +59,6 @@ function Reply({
       replies: [],
     };
 
-    console.log(user);
-
     if (newComment.content.length === 0) {
       setReplyError(true);
       return;

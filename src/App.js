@@ -6,7 +6,7 @@ import Comment from "./components/Comment";
 function App() {
   const [comments, setComments] = useState(data.comments);
   const [activeReply, setActiveReply] = useState(null);
-  const [idCount, setIdCount] = useState(() => 4);
+  const [idCount, setIdCount] = useState(() => 5);
   const user = data.currentUser;
 
   const handleActiveReply = function (id) {
@@ -15,6 +15,18 @@ function App() {
 
   const handleAddComment = function (cmntObj) {
     setComments((comments) => [...comments, cmntObj]);
+  };
+
+  const handleDeleteComment = function (targetId) {
+    setComments((comments) =>
+      comments
+        .filter((comment) => comment.id !== targetId) // Remove top-level comment with id 4
+        .map((comment) => ({
+          ...comment,
+          replies:
+            comment.replies?.filter((reply) => reply.id !== targetId) || [], // Remove nested reply with id 4
+        }))
+    );
   };
 
   return (
@@ -29,6 +41,7 @@ function App() {
             activeReply={activeReply}
             idCount={idCount}
             setIdCount={setIdCount}
+            deleteComment={handleDeleteComment}
           />
         ))}
         <Reply

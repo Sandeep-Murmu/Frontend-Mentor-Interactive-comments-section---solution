@@ -1,6 +1,6 @@
 function ReplyBtn({ toggleReply }) {
   return (
-    <button className="comment-reply-btn" onClick={() => toggleReply()}>
+    <button className="comment-reply-btn comment-btn" onClick={() => toggleReply()}>
       <img src="../../images/icon-reply.svg" alt="reply" />
       <span>Reply</span>
     </button>

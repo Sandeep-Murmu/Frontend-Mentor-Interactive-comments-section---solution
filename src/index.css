@@ -40,7 +40,7 @@ code {
 
 .comment-container {
   margin: auto;
-  max-width: 754px;
+  max-width: 756px;
   padding: 2rem;
 }
 
@@ -136,26 +136,37 @@ span.score {
   color: var(--Grey-500);
 }
 
-.comment-reply-btn {
+.comment-button-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment-btn {
   border: none;
   background: transparent;
   cursor: pointer;
 }
 
-.comment-reply-btn img {
+.comment-btn img {
   margin-right: 1rem;
 }
 
-.comment-reply-btn span {
-  color: var(--Grey-500);
+.comment-btn span {
   font-size: 1.4rem;
   font-weight: 700;
 }
 
 p.comment-content {
-  color: var(--Grey-500);
   font-size: 1.6rem;
   line-height: 2.4rem;
+}
+
+.comment-reply-btn span {
+  color: var(--Grey-500);
+}
+
+.comment-delete-btn span {
+  color: var(--Pink-400);
 }
 
 .reply-input-container {

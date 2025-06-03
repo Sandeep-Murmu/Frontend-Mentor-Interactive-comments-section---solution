@@ -3,7 +3,7 @@ import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
 import Reply from "./Reply";
-import ReplyBtn from "./ReplyBtn";
+import Button from "./Button";
 
 function Comment({
   comment,
@@ -12,16 +12,11 @@ function Comment({
   activeReply,
   idCount,
   setIdCount,
+  deleteComment,
 }) {
   const [replyOption, setReplyOption] = useState(false);
   const [commentScore, setCommentScore] = useState(comment.score);
   const [vote, setVote] = useState(null);
-
-  if (user.username === comment.user.username) {
-    console.log("same user");
-  } else {
-    console.log("different user");
-  }
 
   const handleReply = function () {
     setReplyOption((option) => !option);
@@ -35,6 +30,8 @@ function Comment({
 
     setReplyOption(false);
   };
+
+
 
   const handleCommentScore = function (type) {
     if (type === "increament") {
@@ -89,7 +86,30 @@ function Comment({
               status={comment.createdAt}
               currentUser={comment.user.username === user.username}
             />
-            <ReplyBtn toggleReply={handleReply} />
+            {comment.user.username === user.username ? (
+              <>
+                <div className="comment-button-container">
+                  <Button
+                    onClickFnc={() => deleteComment(comment.id)}
+                    imgSrc="../../images/icon-delete.svg"
+                    type="delete"
+                  >
+                    Delete
+                  </Button>
+                  <Button imgSrc="../../images/icon-edit.svg" type="reply">
+                    Edit
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <Button
+                onClickFnc={handleReply}
+                imgSrc="../../images/icon-reply.svg"
+                type="reply"
+              >
+                Reply
+              </Button>
+            )}
           </div>
           <div className="comment-box-bottom">
             <CommentContent
@@ -111,6 +131,7 @@ function Comment({
               activeReply={activeReply}
               idCount={idCount}
               setIdCount={setIdCount}
+              deleteComment={deleteComment}
             />
           ))}
       </div>
