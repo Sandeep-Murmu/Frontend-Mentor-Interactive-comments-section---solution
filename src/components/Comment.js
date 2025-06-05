@@ -155,6 +155,7 @@ function Comment({
           replyEdit={true}
           currentReply={comment}
           submitEdit={submitEdit}
+          replyTo={comment.replyingTo}
           level="Reply"
         />
       )}

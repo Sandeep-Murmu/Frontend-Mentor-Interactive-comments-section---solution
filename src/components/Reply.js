@@ -61,6 +61,7 @@ function Reply({
 
   function handleSend() {
     if (replyEdit) {
+      console.log(content);
       submitEdit(content);
     } else {
       setIdCount((id) => id + 1);
