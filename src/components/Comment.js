@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import CommentContent from "./CommentContent";
 import CommentScore from "./CommentScore";
 import CommentUser from "./CommentUser";
@@ -16,6 +16,8 @@ function Comment({
 }) {
   const [replyOption, setReplyOption] = useState(false);
   const [commentScore, setCommentScore] = useState(comment.score);
+  const [commentContent, setCommentContent] = useState(comment.content);
+  const [editOption, setEditOption] = useState(false);
   const [vote, setVote] = useState(null);
 
   const handleReply = function () {
@@ -30,8 +32,6 @@ function Comment({
 
     setReplyOption(false);
   };
-
-
 
   const handleCommentScore = function (type) {
     if (type === "increament") {
@@ -70,72 +70,94 @@ function Comment({
     [activeReply]
   );
 
+  const submitEdit = function (content) {
+    comment.content = content;
+    setCommentContent(content);
+    setEditOption(false);
+  };
+
   return (
     <>
-      <div className="comment-box" data-id={comment.id}>
-        <div className="comment-box-left">
-          <CommentScore vote={vote} scoreControl={handleCommentScore}>
-            {commentScore}
-          </CommentScore>
-        </div>
-        <div className="comment-box-right">
-          <div className="comment-box-top">
-            <CommentUser
-              profile={comment.user.image.png}
-              name={comment.user.username}
-              status={comment.createdAt}
-              currentUser={comment.user.username === user.username}
-            />
-            {comment.user.username === user.username ? (
-              <>
-                <div className="comment-button-container">
+      {!editOption && (
+        <div>
+          <div className="comment-box" data-id={comment.id}>
+            <div className="comment-box-left">
+              <CommentScore vote={vote} scoreControl={handleCommentScore}>
+                {commentScore}
+              </CommentScore>
+            </div>
+            <div className="comment-box-right">
+              <div className="comment-box-top">
+                <CommentUser
+                  profile={comment.user.image.png}
+                  name={comment.user.username}
+                  status={comment.createdAt}
+                  currentUser={comment.user.username === user.username}
+                />
+                {comment.user.username === user.username ? (
+                  <>
+                    <div className="comment-button-container">
+                      <Button
+                        onClickFnc={() => deleteComment(comment.id)}
+                        imgSrc="../../images/icon-delete.svg"
+                        type="delete"
+                      >
+                        Delete
+                      </Button>
+                      <Button
+                        onClickFnc={() => setEditOption(true)}
+                        imgSrc="../../images/icon-edit.svg"
+                        type="reply"
+                      >
+                        Edit
+                      </Button>
+                    </div>
+                  </>
+                ) : (
                   <Button
-                    onClickFnc={() => deleteComment(comment.id)}
-                    imgSrc="../../images/icon-delete.svg"
-                    type="delete"
+                    onClickFnc={handleReply}
+                    imgSrc="../../images/icon-reply.svg"
+                    type="reply"
                   >
-                    Delete
+                    Reply
                   </Button>
-                  <Button imgSrc="../../images/icon-edit.svg" type="reply">
-                    Edit
-                  </Button>
-                </div>
-              </>
-            ) : (
-              <Button
-                onClickFnc={handleReply}
-                imgSrc="../../images/icon-reply.svg"
-                type="reply"
-              >
-                Reply
-              </Button>
-            )}
+                )}
+              </div>
+              <div className="comment-box-bottom">
+                <CommentContent
+                  replyTo={comment.replyingTo ? `@${comment.replyingTo}` : ""}
+                  content={commentContent}
+                />
+              </div>
+            </div>
           </div>
-          <div className="comment-box-bottom">
-            <CommentContent
-              replyTo={comment.replyingTo ? `@${comment.replyingTo}` : ""}
-              content={comment.content}
-            />
+          <div className="reply-section">
+            {comment.replies &&
+              comment.replies.length > 0 &&
+              comment.replies.map((el, i) => (
+                <Comment
+                  comment={el}
+                  key={i}
+                  user={user}
+                  updateActiveReply={updateActiveReply}
+                  activeReply={activeReply}
+                  idCount={idCount}
+                  setIdCount={setIdCount}
+                  deleteComment={deleteComment}
+                />
+              ))}
           </div>
         </div>
-      </div>
-      <div className="reply-section">
-        {comment.replies &&
-          comment.replies.length > 0 &&
-          comment.replies.map((el, i) => (
-            <Comment
-              comment={el}
-              key={i}
-              user={user}
-              updateActiveReply={updateActiveReply}
-              activeReply={activeReply}
-              idCount={idCount}
-              setIdCount={setIdCount}
-              deleteComment={deleteComment}
-            />
-          ))}
-      </div>
-
+      )}
+      {editOption && (
+        <Reply
+          user={user}
+          replyEdit={true}
+          currentReply={comment}
+          submitEdit={submitEdit}
+          level="Reply"
+        />
+      )}
       {replyOption && comment.id === activeReply && (
         <Reply
           user={user}

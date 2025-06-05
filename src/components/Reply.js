@@ -11,8 +11,20 @@ function Reply({
   idCount,
   setIdCount,
   level,
+  replyEdit = false,
+  currentReply = null,
+  submitEdit,
 }) {
-  const [content, setContent] = useState(replyTo ? `@${replyTo} ` : "");
+  // const [content, setContent] = useState(() => replyTo ? `@${replyTo} ` : "");
+  const [content, setContent] = useState(() => {
+    if (currentReply) {
+      return replyTo
+        ? `@${replyTo} ${currentReply.content}`
+        : `${currentReply.content}`;
+    } else {
+      return replyTo ? `@${replyTo} ` : "";
+    }
+  });
   const [replyError, setReplyError] = useState(false);
 
   function removeFirstWord(str) {
@@ -48,25 +60,30 @@ function Reply({
   }
 
   function handleSend() {
-    setIdCount((id) => id + 1);
-    const newComment = {
-      id: idCount,
-      content: replyOption ? removeFirstWord(content) : content,
-      user,
-      replyingTo: replyTo,
-      createdAt: timeAgo(new Date().toISOString()),
-      score: 0,
-      replies: [],
-    };
+    if (replyEdit) {
+      submitEdit(content);
+    } else {
+      setIdCount((id) => id + 1);
+      const newComment = {
+        id: idCount,
+        content: replyOption ? removeFirstWord(content) : content,
+        user,
+        replyingTo: replyTo,
+        createdAt: timeAgo(new Date().toISOString()),
+        score: 0,
+        replies: [],
+      };
 
-    if (newComment.content.length === 0) {
-      setReplyError(true);
-      return;
+      if (newComment.content.length === 0) {
+        setReplyError(true);
+        return;
+      }
+
+      handleSubmit(newComment);
+      setContent("");
     }
-
-    handleSubmit(newComment);
-    setContent("");
   }
+
   return (
     <div className="comment-box comment-reply">
       <CommentUser profile={user.image.png} />
