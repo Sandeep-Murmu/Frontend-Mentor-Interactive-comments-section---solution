@@ -9,7 +9,6 @@ function App() {
   const [activeReply, setActiveReply] = useState(null);
   const [idCount, setIdCount] = useState(() => 5);
   const [togglePopup, setTogglePopup] = useState(false);
-  const [deleteComment, setDeleteComment] = useState(false);
   const [currentCommentId, setCurrentCommentId] = useState(null);
   const user = data.currentUser;
 
@@ -26,27 +25,30 @@ function App() {
     setTogglePopup(true);
   };
 
-  useEffect(
-    function () {
-      if (deleteComment) {
-        console.log(currentCommentId)
-        setComments((comments) =>
-          comments
-            .filter((comment) => comment.id !== currentCommentId) // Remove top-level comment with id 4
-            .map((comment) => ({
-              ...comment,
-              replies:
-                comment.replies?.filter(
-                  (reply) => reply.id !== currentCommentId
-                ) || [], // Remove nested reply with id 4
-            }))
-        );
-      }
-      setTogglePopup(false);
-      setDeleteComment(false);
-    },
-    [deleteComment]
-  );
+  const deleteComment = function () {
+    console.log("comments: ", comments);
+    console.log("currentId: ", currentCommentId);
+
+    setComments((comments) =>
+      comments
+        .filter((comment) => comment.id !== currentCommentId) // Remove top-level comment a/c currentCommentID
+        .map((comment) => ({
+          ...comment,
+          replies:
+            comment.replies
+              ?.filter((reply) => reply.id !== currentCommentId)
+              .map((comment) => ({
+                ...comment,
+                replies:
+                  comment.replies?.filter(
+                    (reply) => reply.id !== currentCommentId
+                  ) || [],
+              })) || [],
+        }))
+    );
+
+    setTogglePopup(false);
+  };
 
   return (
     <>
@@ -77,7 +79,7 @@ function App() {
         <Popup
           popupOption="Delete Comment"
           popupContent="Are you sure want to delete this comment? This will remove the comment and can't be undone"
-          deleteComment={setDeleteComment}
+          deleteComment={deleteComment}
           togglePopup={setTogglePopup}
         />
       )}

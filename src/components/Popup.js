@@ -10,7 +10,7 @@ function Popup({ popupOption, popupContent, deleteComment, togglePopup }) {
           <PopupButton type="no" onClickFnc={() => togglePopup(false)}>
             No, Cancel
           </PopupButton>
-          <PopupButton type="yes" onClickFnc={() => deleteComment(true)}>
+          <PopupButton type="yes" onClickFnc={deleteComment}>
             Yes, Delete
           </PopupButton>
         </div>
