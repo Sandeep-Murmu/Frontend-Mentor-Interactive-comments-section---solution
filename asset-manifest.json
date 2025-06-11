@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Frontend-Mentor-Interactive-comments-section---solution/static/css/main.0c45cd26.css",
+    "main.js": "/Frontend-Mentor-Interactive-comments-section---solution/static/js/main.f339e2e8.js",
+    "index.html": "/Frontend-Mentor-Interactive-comments-section---solution/index.html",
+    "main.0c45cd26.css.map": "/Frontend-Mentor-Interactive-comments-section---solution/static/css/main.0c45cd26.css.map",
+    "main.f339e2e8.js.map": "/Frontend-Mentor-Interactive-comments-section---solution/static/js/main.f339e2e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c45cd26.css",
+    "static/js/main.f339e2e8.js"
+  ]
+}
