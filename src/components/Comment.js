@@ -97,14 +97,14 @@ function Comment({
                 <>
                   <Button
                     onClickFnc={() => deleteComment(comment.id)}
-                    imgSrc="../../images/icon-delete.svg"
+                    imgSrc="./images/icon-delete.svg"
                     type="delete"
                   >
                     Delete
                   </Button>
                   <Button
                     onClickFnc={() => setEditOption(true)}
-                    imgSrc="../../images/icon-edit.svg"
+                    imgSrc="./images/icon-edit.svg"
                     type="reply"
                   >
                     Edit
@@ -113,7 +113,7 @@ function Comment({
               ) : (
                 <Button
                   onClickFnc={handleReply}
-                  imgSrc="../../images/icon-reply.svg"
+                  imgSrc="./images/icon-reply.svg"
                   type="reply"
                 >
                   Reply
