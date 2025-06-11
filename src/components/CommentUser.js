@@ -3,7 +3,7 @@ function CommentUser({ profile, name, status, currentUser = false }) {
     <div className="user-info">
       <img
         className="user-profile-img"
-        src={`../.${profile}`}
+        src={`${profile}`}
         alt="profile-img"
       />
       <span className="user-profile-name">{name}</span>
