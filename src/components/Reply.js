@@ -86,7 +86,7 @@ function Reply({
   }
 
   return (
-    <div className="comment-box comment-reply">
+    <div className="comment-reply">
       <CommentUser profile={user.image.png} />
       <ReplyInput
         replyTo={replyTo}
